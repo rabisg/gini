@@ -1,0 +1,43 @@
+<template name="view-content">
+  <div class="container">
+    <section id="section1" class="content">
+      <div class="row">
+        <div class="col-md-2 hidden-xs hidden-sm">
+          <img src="/images/profile_pic.jpg" class="img-thumbnail img-responsive author-image">
+          <div class="profile-name"><a href="/people/{{content.addedBy}}">{{author.profile.firstName}}</a></div>
+          <div class="profile-detail"><i>{{author.profile.bio}}</i></br>You can follow me <a href='http://twitter.com/{{author.profile.twitterHandle}}'>@{{author.profile.twitterHandle}}</a></div>
+          <div class="underline"></div>
+          <div class="publish-detail">
+            Published
+            <div class="publish-date">{{content.added}}</div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <img src="{{content.image}}" class="img-rounded img-responsive" id="blog-image">
+          <div class="blog-title" id="blog-title">{{content.title}}</div>
+          <div class="blog-detail"><a href="/people/{{content.addedBy}}">{{author.profile.firstName}} {{author.profile.lastName}}</a></div>
+          <div id="blog-content" class="blog-content">
+            {{{content.content}}}
+          </div>
+        </div>
+        <div class="col-md-2">
+          {{#if perm 'edit_content'}}
+            <button type="button" class="btn btn-default btn-lg" id="edit-content">
+              <span class="glyphicon glyphicon-edit"></span> <span id="edit-status">Edit</span>
+            </button>
+            <button type="button" class="btn btn-default btn-lg" id="delete-content">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          {{/if}}
+          <div id="URLcontainer" class="hidden">
+            <div class="edit-image-form">
+              <label class="sr-only">New Url</label>
+              <input type="url" class="form-control" placeholder="Enter new url" id="edit-image-url">
+            </div>
+            <button type="submit" class="btn btn-primary" id="edit-image">Change</button>
+          </div>
+        </div>
+      </div>
+      </section>
+    </div>
+  </template>

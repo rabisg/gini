@@ -1,0 +1,25 @@
+<template name="manage-perm">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td></td>
+        {{#each roles}}
+          <td> {{name}} </td>
+        {{/each}}
+      </tr>
+    </thead>
+    {{#each permissions}}
+      <tr>
+        <td>
+          <b>{{name}}</b>
+          <div class="">Module: {{module}}</div>
+        </td>
+        {{#each ../roles}}
+          <td> <input type="checkbox" data-role="{{name}}" data-perm="{{../name}}"
+                {{#if contains ../roles name}} checked="checked" {{/if}}>
+          </td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </table>
+</template>

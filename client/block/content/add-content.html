@@ -1,0 +1,55 @@
+<template name="add-content">
+  <div class="add-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <input type="text" class="form-control" placeholder="Enter the slug" id="slug">
+          <span class="help-text">A new content with the given slug will be created.</span> <br />
+          <button class="btn btn-primary btn-lg" id="create-content">Create</button>
+        </div>
+      </div>
+    </div>
+    <div class="container blocked">
+      <section id="section1" class="content">
+        <div class="row">
+          <div class="col-md-2 hidden-xs hidden-sm">
+            <img src="/images/profile_pic.jpg" class="img-thumbnail img-responsive author-image">
+            <div class="profile-name"><a>Author's Name</a></div>
+            <div class="profile-detail">About me</br>Where can you</br>follow me</br>etc. etc...</div>
+            <div class="underline"></div>
+            <div class="publish-detail">
+              Published
+              <div class="publish-date">31st January, 2013</div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <img src="http://www.ronaldpbarba.com/wp-content/uploads/2012/09/blog-cover-photo.png" class="img-rounded img-responsive" id="blog-image">
+            <div class="blog-title" id="blog-title">Sample Title</div>
+            <div class="blog-detail"><a>Author's Name</a></div>
+            <div id="blog-content" class="blog-content">
+                <h2>Enjoy live editing (+markdown)</h2>
+
+                <p><b><i>Click to edit, Select to apply effect, click items of toolbar to toggle effects.</i></b></p>
+                <hr>
+                <p>Horizontal-Rule can be insert by click「...」on the toolbar or just type「... 」/「--- 」/「*** 」at line start. Note that
+                  there's a SPACE at the end of a command.</p>
+                <hr>
+                <p>To link or unlink, please press the <i>ENTER</i> key after you filled the input field with your a link. A <a href="/sofish">link</a> can be unlink by apply an empty value to the input field.
+
+                </p><p>
+                </p><ul>
+                  <li>Ordered list and unordered list is supported.</li>
+                  <li>Use the toolbar or use markdown syntax like「<b>1. </b>」,「<b>- </b>」or「<b>* </b>」</li>
+                </ul>
+                <blockquote>You can quote text by type「<b>&gt;</b>」at line start.</blockquote>
+                <p>What about add underline to text? "<u>Stay Hungry, Stay Foolish - <i>Steve Jobs</i></u>".</p>
+                <pre>A code block is also support by type 「```」 at line start and press SPACE.</pre>
+                <p>For more, please checkout: <a href="https://github.com/sofish/pen#readme" target="_blank">https://github.com/sofish/pen#readme</a>
+                </p>
+            </div>
+          </div>
+        </div>
+        </section>
+      </div>
+    </div>
+  </template>

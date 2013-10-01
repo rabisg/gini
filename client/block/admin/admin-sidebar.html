@@ -1,0 +1,20 @@
+<template name="admin-sidebar">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      {{#if perm "manage_perm"}}
+        <li class="sidebar-brand"><a href="/admin">Manage Site</a></li>
+        <li><a href="/admin/manage/roles">Manage Roles</a></li>
+        <li><a href="/admin/manage/permissions">Manage Permissions</a></li>
+        <hr />
+      {{/if}}
+      {{#if perm "add_content"}}
+        <li class="sidebar-brand"><a>Manage Content</a></li>
+        <li><a href="/content">Add Content</a></li>
+        <hr />
+      {{/if}}
+      {{#if currentUser}}
+        <li class="sidebar-brand"><a href="/profile">Manage Profile</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</template>

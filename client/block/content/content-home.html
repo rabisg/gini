@@ -1,0 +1,27 @@
+<template name="content-home">
+  <div class="container" id="contentHome">
+    {{#each contents}}
+      <section class="content">
+        <div class="row">
+          <div class="col-md-5 inc-pad">
+            <img src="{{this.image}}" class="img-rounded img-responsive">
+          </div>
+          <div class="col-md-6">
+            <div class="blog-title"><a href="/content/{{this.slug}}">{{this.title}}</a></div>
+            <div class="blog-detail"><a href="/people/{{this.addedBy}}">Author: {{author this.addedBy}}</a></div>
+            <div class="blog-summary">
+              {{{this.content}}}
+            </div>
+            <div class="blog-footer"><a href="/content/{{this.slug}}">
+              <button type="button" class="btn btn-primary btn-lg">More</button></a>
+            </div>
+          </div>
+          <div class="col-md-1 hidden-xs hidden-sm">
+            <div class="nextsection"></div>
+          </div>
+        </div>
+        <div class="seperator"></div>
+      </section>
+    {{/each}}
+  </div>
+</template>
