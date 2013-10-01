@@ -1,33 +1,26 @@
-@Roles = new Meteor.Collection("Roles")
-Meteor.publish("roles", ->
-  if Gini.allow this.userId, "manage_role"
-    Roles.find()
-)
+Meteor.publish "roles", ->
+  if Gini.Permissions.allow "manage_perm", this.userId
+    Gini.Collections.Roles.find()
 
-@UserRoles = new Meteor.Collection("UserRoles")
-Meteor.publish("myRoles", -> UserRoles.find({id: this.userId}))
+Meteor.publish "userRoles", (id) ->
+  if Gini.Permissions.allow "manage_perm", @userId and id?
+    UserRoles.find {id: id}
 
-@Permissions = new Meteor.Collection("Permissions")
-Meteor.publish("permissions", -> Permissions.find())
+Meteor.publish "permissions", ->  Permissions.find()
+Meteor.methods "myRoles", -> UserRoles.find {id: this.userId}, {fields: "roles"}
 
-Gini.Module.register_perm = (name, module, roles=[]) ->
-  if Permissions.find({name: name}).count() is 0
+# Server Method: Can only be called by direct invocation i.e. by modules
+Gini.Permissions.addPermission = (name, module, roles=[]) ->
+  if Gini.Collections.Permissions.find({name: name}).count() is 0
     roles = [roles] if roles isnt _.isArray roles
-    Permissions.insert {
+    Gini.Collections.Permissions.insert {
       name: name
       module: module
       roles: roles
     }
 
-Gini.allow = (userId, permission) ->
-  allowedRoles = Permissions.findOne({name: permission}, {fields: "roles"})
-  roles = UserRoles.findOne({id: userId}, {fields: "roles"})
-  if _.intersection roles.roles, allowedRoles.roles isnt []
-    return true
-  return false
-
 init = ->
-  if Roles.find().count() is 0
+  if Gini.Collections.Roles.find().count() is 0
     Roles.insert [{
       name: "admin"
       description: "Perform administrative task."
@@ -36,7 +29,7 @@ init = ->
       name: "author"
       description: "Content Writer/Reviewer"
     }]
-  if Permissions.find({name: "manage_roles"}).count() is 0
-    Gini.Module.register_perm "manage_role", "core", ["admin"]
+  if Gini.Collections.Permissions.find({name: "manage_perm"}).count() is 0
+    Gini.Permissions.addPermission "manage_perm", "core", ["admin"]
 
 Gini.startup init
