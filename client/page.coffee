@@ -37,3 +37,6 @@ Gini.Page = (path, options) ->
               console.error options.blocks
         return blocks
     }
+
+''' Default Page Templates '''
+Gini.Page "/", layout : "1-col-HF"
