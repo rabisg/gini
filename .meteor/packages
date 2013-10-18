@@ -9,5 +9,7 @@ preserve-inputs
 bootstrap3-less
 less
 coffeescript
+accounts-password
+accounts-ui-bootstrap-3
+pen
 iron-router
-autopublish

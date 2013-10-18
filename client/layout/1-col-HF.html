@@ -1,11 +1,9 @@
 <template name="1-col-HF">
-  <div class="navbar navbar-default navbar-fixed-top">
-    {{{blockDefault "header" header}}}
-  </div>
+  {{yield 'header'}}
 
-  {{{content}}}
+  {{yield}}
 
   <footer>
-    {{{blockDefault "footer" footer}}}
+    {{yield 'footer'}}
   </footer>
 </template>

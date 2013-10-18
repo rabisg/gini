@@ -1,25 +1,27 @@
 <template name="default-header">
-  <div class="bar">
-  </div>
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><img class="logo" src="./images/blogpoint.png"></a>
+  <!-- Fixed navbar -->
+  <header class="navbar navbar-default navbar-fixed-top">
+    <div class="bar">
     </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">BlogPoint</a></li>
-        <li><a href="#author">About</a></li>
-        <li><a href="#comment">Comments</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#contact">Contact</a></li>
-        <li class="active"><a href="login.html">Log in</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand weighted">BlogPoint</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          {{#if perm 'add_content'}}
+            <li><a href="/content">Add Content</a></li>
+          {{/if}}
+          <li><a href="/content/about">About</a></li>
+          <li class="active">{{loginButtons}}</li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </header>
+  <div class="pad"></div>
 </template>
