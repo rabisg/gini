@@ -1,0 +1,37 @@
+<template name="manage-role">
+  <h2>Create New Role</h2>
+  <div class="form-inline">
+    <div class="form-group col-sm-2">
+      <label class="sr-only" for="roleName">Name</label>
+      <input class="form-control" id="roleName" placeholder="Name">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="sr-only" for="roleDescription">Description</label>
+      <input class="form-control" id="roleDescription" placeholder="Description">
+    </div>
+    <button type="submit" class="btn btn-default" id="create-role-btn">Create Role</button>
+  </div>
+  <hr />
+  <h2>Assign Roles</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td> <h3>User</h3> </td>
+        <td> <h3>Roles</h3> </td>
+        <td> <h3>Add Role</h3> </td>
+      </tr>
+    </thead>
+    {{#each userRoles}}
+      <tr>
+        <td> {{email id}} </td>
+        <td> {{#each roles}}
+          <span class="role">
+            {{this}}
+            <span class="glyphicon glyphicon-trash delRole" data-user="{{../id}}" data-role="{{this}}" />
+          </span>
+        {{/each}} </td>
+        <td> <input class="form-control addRole" data-user="{{id}}" placeholder="Add a role"> </td>
+      </tr>
+    {{/each}}
+  </table>
+</template>

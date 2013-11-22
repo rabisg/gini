@@ -9,7 +9,7 @@ Roles =
   description: A long description
 
 UserRoles =
-  userId: userId
+  id: userId
   roles : [role]
 '''
 Gini.Collections.Roles        = new Meteor.Collection "Roles"
@@ -20,8 +20,10 @@ Gini.Permissions = {}
 Gini.Permissions.allow = (permission, userId) ->
   allowedRoles = Gini.Collections.Permissions.findOne({name: permission}, {fields: {roles: 1}})
   roles = Gini.Collections.UserRoles.findOne({id: userId}, {fields: {roles: 1}})
-  if not allowedRoles
+  if not allowedRoles #Not a valid permission
     return false
-  if "anon" in allowedRoles.roles or (roles? and _.intersection roles.roles, allowedRoles.roles isnt [])
+  if "Anonymous" in allowedRoles.roles
+    return true
+  if roles? and _.intersection(roles.roles, allowedRoles.roles).length > 0
     return true
   return false

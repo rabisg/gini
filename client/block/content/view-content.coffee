@@ -12,7 +12,7 @@ Template['view-content'].events {
     $("#URLcontainer").toggleClass("hidden",500)
 
   'click #delete-content': (event) ->
-    Meteor.call 'deleteContent', this, (error, result) ->
+    Meteor.call 'deleteContent', this.content, (error, result) ->
       unless error
         Router.go '/'
 
@@ -23,7 +23,7 @@ Template['view-content'].events {
 
 Template['view-content'].saveContent = (template) ->
   content =
-    slug: template.slug
+    slug: template.content.slug
     title: $('#blog-title').text()
     content: $('#blog-content').html()
     image: $('#blog-image').attr('src')

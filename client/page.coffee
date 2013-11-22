@@ -12,28 +12,30 @@ Gini.Page "/posts/:_id", options
 Router.configure {
   notFoundTemplate: '404'
   loadingTemplate: 'loading'
-  layout: '1-col-HF'
 }
 
 Gini.Page = (path, options) ->
   Router.map () ->
     @route options.template, {
-      layout: options.layout
+      layoutTemplate: options.layout
       path: path
       data: options.data
       waitOn: ->
-        waitFor = [Meteor.subscribe("permissions"), Meteor.subscribe("userRoles")]
+        waitFor = [
+          Meteor.subscribe "permissions"
+          Meteor.subscribe "userRoles"
+        ]
         if options.waitOn?
           _.union waitFor, options.waitOn(@params)
         else waitFor
 
-      renderTemplates: getSubTemplates options.blocks
+      yieldTemplates: getSubTemplates options.blocks
     }
+    return
 
 getSubTemplates = (blocks) ->
   # Add the defaults first
   retval = Gini.Defaults.blocks
-
   for region, block of blocks
     if _.isString block
       retval[block] = to: region

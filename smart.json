@@ -4,8 +4,6 @@
     "bootstrap3-less": {},
     "iron-router": {},
     "accounts-ui-bootstrap-3": {},
-    "pen": {
-      "path": "/home/rabisg/Documents/meteor/meteor-pen"
-    }
+    "pen": {}
   }
 }

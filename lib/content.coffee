@@ -42,8 +42,10 @@ Meteor.methods {
 Gini.startup = ->
   if Meteor.isServer
     Gini.Collections.Content._ensureIndex 'slug', unique: 1
-    Gini.Permissions.addPermission "view_content", "core", ["anon"]
-    Gini.Permissions.addPermission  "add_content", "core", ["admin", "author"]
-    Gini.Permissions.addPermission "edit_content", "core", ["admin", "author"]
+    Gini.Permissions.addPermission "view_content", "core", ["Anonymous"]
+    Gini.Permissions.addPermission  "add_content", "core", ["Admin", "Author"]
+    Gini.Permissions.addPermission "edit_content", "core", ["Admin", "Author"]
     Meteor.publish "content", (slug) -> Gini.Collections.Content.find {slug: slug}
     Meteor.publish "latestContent", -> Gini.Collections.Content.find {}, { sort: [["added", "desc"]], limit: 5 }
+    Meteor.publish "latestContentByUser", (userId) ->
+      Gini.Collections.Content.find {addedBy: userId}, { sort: [["added", "desc"]], limit: 5 }

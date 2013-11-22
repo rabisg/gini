@@ -3,4 +3,4 @@ Meteor.startup ->
   Meteor.subscribe "userRoles"
   Meteor.subscribe "permissions"
 
-Handlebars.registerHelper 'perm', (permission) -> Gini.Permissions.allow permission, Meteor.userId()
+Handlebars.registerHelper 'perm', (permission, userid) -> Gini.Permissions.allow permission, Meteor.userId()

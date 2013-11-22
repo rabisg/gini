@@ -4,20 +4,20 @@
       <div class="row">
         <div class="col-md-2 hidden-xs hidden-sm">
           <img src="/images/profile_pic.jpg" class="img-thumbnail img-responsive author-image">
-          <div class="profile-name"><a href="/people/{{addedBy}}">{{addedBy}}</a></div>
-          <div class="profile-detail">About me</br>Where can you</br>follow me</br>etc. etc...</div>
+          <div class="profile-name"><a href="/people/{{content.addedBy}}">{{author.profile.firstName}}</a></div>
+          <div class="profile-detail"><i>{{author.profile.bio}}</i></br>You can follow me <a href='http://twitter.com/{{author.profile.twitterHandle}}'>@{{author.profile.twitterHandle}}</a></div>
           <div class="underline"></div>
           <div class="publish-detail">
             Published
-            <div class="publish-date">{{added}}</div>
+            <div class="publish-date">{{content.added}}</div>
           </div>
         </div>
         <div class="col-md-8">
-          <img src="{{image}}" class="img-rounded img-responsive" id="blog-image">
-          <div class="blog-title" id="blog-title">{{title}}</div>
-          <div class="blog-detail"><a href="/people/{{addedBy}}">{{addedBy}}</a></div>
+          <img src="{{content.image}}" class="img-rounded img-responsive" id="blog-image">
+          <div class="blog-title" id="blog-title">{{content.title}}</div>
+          <div class="blog-detail"><a href="/people/{{content.addedBy}}">{{author.profile.firstName}} {{author.profile.lastName}}</a></div>
           <div id="blog-content" class="blog-content">
-            {{{content}}}
+            {{{content.content}}}
           </div>
         </div>
         <div class="col-md-2">

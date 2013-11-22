@@ -14,8 +14,8 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          {{#if perm 'add_content'}}
-            <li><a href="/content">Add Content</a></li>
+          {{#if currentUser}}
+            <li><a href="/admin">Manage</a></li>
           {{/if}}
           <li><a href="/content/about">About</a></li>
           <li class="active">{{loginButtons}}</li>

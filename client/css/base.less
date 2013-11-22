@@ -1,11 +1,26 @@
 @import "/packages/bootstrap3-less/bootstrap.lessimport";
 @import url(http://fonts.googleapis.com/css?family=Roboto:100);
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 30px; /* bottom = footer height */
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+}
+
 body {
   color: #666;
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
-  font-size: 30px;
+  // font-size: 30px;
 }
 header {
   position: fixed;
@@ -13,6 +28,7 @@ header {
   width: 100%;
   max-width: 100%;
   border-bottom: 1px solid;
+  font-size: 30px;
 }
 .z-max {
   z-index: 9999;
@@ -95,7 +111,7 @@ a:hover {
 footer {
   text-align: center;
   font-size: 15px;
-  background-color: #444;
+  background-color: #222;
   color: #eee;
   min-height: 30px;
 }

@@ -1,0 +1,17 @@
+<template name="2-col-HF">
+  {{yield 'header'}}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        {{yield 'sidebar'}}
+      </div>
+      <div class="col-md-9">
+        {{yield}}
+      </div>
+    </div>
+  </div>
+  <footer>
+    {{yield 'footer'}}
+  </footer>
+</template>
